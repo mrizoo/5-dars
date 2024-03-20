@@ -2,11 +2,11 @@ let input = document.querySelector(".forminput");
 let form = document.querySelector(".form");
 let main = document.querySelector(".main__list");
 let remov = document.getElementById("removeAll");
-
+// get info by local storage
 let todo = JSON.parse(localStorage.getItem("todo"))
   ? JSON.parse(localStorage.getItem("todo"))
   : [];
-
+// function validation
 function validate(value) {
   if (!value.value.trim()) {
     alert("todo bolishi shart");
@@ -18,11 +18,11 @@ function validate(value) {
   }
   return true;
 }
-
+//  clear function
 function clear(input) {
   input.value = "";
 }
-
+//  todo restart
 document.addEventListener("DOMContentLoaded", function () {
   todo.forEach((el) => {
     console.log(el);
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// create todo
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (validate(input)) {
@@ -89,7 +90,7 @@ form.addEventListener("submit", function (e) {
   }
   clear(input);
 });
-
+//  all remove todo 😉
 remov.addEventListener("click", function () {
   main.innerHTML = "";
   localStorage.clear();
